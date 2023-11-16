@@ -5,7 +5,7 @@
  *Description: Display a prompt
  *Return: Always 0 (Success)
  */
-
+int main(void);
 int main(void)
 {
 	char prompt[] = "my_shell$ ";
@@ -16,16 +16,19 @@ int main(void)
 	int i, starts;
 	char **array;
 	char *delim = "\n";
+	char *path;
 
 	while (true)
 	{
 	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+
 	read = getline(&input, &count, stdin);
+
 	if (read == -1)
-		{
-			perror("exiting my shell");
-			exit(1);
-		}
+	{
+		perror("exiting my shell");
+		exit(1);
+	}
 
 	tok = strtok(input, delim);
 

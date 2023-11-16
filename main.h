@@ -2,11 +2,10 @@
 #define MAIN_H
 
 /**
- * File: main.h
- * Auth:hadiza hamisu,Victor Onyebueke
+ * file: main.h
+ * description: this is the header file
  */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
