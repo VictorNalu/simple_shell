@@ -5,7 +5,7 @@
  * file: main.h
  * description: this is the header file
  */
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>

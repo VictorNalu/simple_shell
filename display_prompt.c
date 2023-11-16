@@ -16,12 +16,10 @@ int main(void)
 	int i, starts;
 	char **array;
 	char *delim = "\n";
-	char *path;
 
 	while (true)
 	{
 	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
-
 	read = getline(&input, &count, stdin);
 
 	if (read == -1)
