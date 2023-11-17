@@ -8,7 +8,6 @@
 int main(void);
 int main(void)
 {
-	char prompt[] = "my_shell$ ";
 	char *input = NULL, *tok;
 	size_t count = 0;
 	ssize_t read;
@@ -21,7 +20,7 @@ int main(void)
 	while (true)
 	{
 		if (isatty(STDOUT_FILENO))
-			write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+			write(STDOUT_FILENO, "my_shell$", 9);
 
 	read = getline(&input, &count, stdin);
 
@@ -32,7 +31,7 @@ int main(void)
 
 	tok = strtok(input, delim);
 
-	array = malloc(sizeof(char *) * 1023);
+	array = malloc(sizeof(char *) * 1024);
 	i = 0;
 
 	while (tok != NULL)
