@@ -14,5 +14,11 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+/* handling path functions */
+
+char *get_location_file(char *path, char *name_file);
+char *get_the_path(char *name_file);
+int start_with_slash(const char *str);
+
 #endif /*MAIN_H*/
 

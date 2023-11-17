@@ -16,16 +16,18 @@ int main(void)
 	int i, starts;
 	char **array;
 	char *delim = "\n";
+	char *path;
 
 	while (true)
 	{
-	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+		if (isatty(STDOUT_FILENO))
+			write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+
 	read = getline(&input, &count, stdin);
 
 	if (read == -1)
 	{
-		perror("exiting my shell");
-		exit(1);
+		exit(0);
 	}
 
 	tok = strtok(input, delim);
@@ -40,6 +42,9 @@ int main(void)
 		i++;
 	}
 	array[i] = NULL;
+
+	path = get_the_path(array[0]);
+
 	child_pid = fork();
 
 	if (child_pid == -1)
@@ -49,10 +54,10 @@ int main(void)
 	}
 	else if (child_pid == 0)
 	{
-		if (execve(array[0], array, NULL) == -1)
+		if (execve(path, array, NULL) == -1)
 		{
-			perror("execve");
-			exit(EXIT_FAILURE);
+			perror("failed to execute");
+			exit(97);
 		}
 	}
 	else
@@ -62,4 +67,6 @@ int main(void)
 
 	}
 	free(input);
+	free(path);
+	return (0);
 }
