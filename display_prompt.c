@@ -20,7 +20,7 @@ int main(void)
 	while (true)
 	{
 		if (isatty(STDOUT_FILENO))
-			write(STDOUT_FILENO, "my_shell$", 9);
+			write(STDOUT_FILENO, "my_shell$ ", 9);
 
 	read = getline(&input, &count, stdin);
 
@@ -56,6 +56,7 @@ int main(void)
 		if (execve(path, array, NULL) == -1)
 		{
 			perror("failed to execute");
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -63,10 +64,11 @@ int main(void)
 		wait(&starts);
 	}
 
-	}
-	free(input);
 	free(path);
 	free(array);
+
+	}
+	free(input);
 	free(delim);
 	return (0);
 }
