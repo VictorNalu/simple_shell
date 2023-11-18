@@ -28,7 +28,7 @@ char *get_the_path(char *name_file)
 		write(2, ": command not found\n", 19);
 		return (NULL);
 	}
-
+	free(path);
 	return (full_path);
 }
 

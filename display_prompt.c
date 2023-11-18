@@ -56,7 +56,6 @@ int main(void)
 		if (execve(path, array, NULL) == -1)
 		{
 			perror("failed to execute");
-			exit(97);
 		}
 	}
 	else
@@ -67,5 +66,7 @@ int main(void)
 	}
 	free(input);
 	free(path);
+	free(array);
+	free(delim);
 	return (0);
 }
