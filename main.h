@@ -21,4 +21,3 @@ char *get_the_path(char *name_file);
 int start_with_slash(const char *str);
 
 #endif /*MAIN_H*/
-

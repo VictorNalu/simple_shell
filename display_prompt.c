@@ -16,11 +16,13 @@ int main(void)
 	char **array;
 	char *delim = "\n";
 	char *path;
+	int num_tok = 0;
+	char prompt[] = "my_shell$ ";
 
 	while (true)
 	{
 		if (isatty(STDOUT_FILENO))
-			write(STDOUT_FILENO, "my_shell$ ", 9);
+			write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 
 	read = getline(&input, &count, stdin);
 
@@ -31,7 +33,7 @@ int main(void)
 
 	tok = strtok(input, delim);
 
-	array = malloc(sizeof(char *) * 1024);
+	array = malloc(sizeof(char *) * num_tok);
 	i = 0;
 
 	while (tok != NULL)
